@@ -13,7 +13,7 @@ You can return the answer in any order.
 
 1.  [Details](#details)
 2.  [Brute Force Solution](#brute-force-solution)
-3.  [Optimzed Solution](#optimized-solution)
+3.  [Optimized Solution](#optimized-solution)
 4.  [Best Solution](#best-solution)
 5.  [Notable Lines](#notable-lines)
 6.  [References](#references)
