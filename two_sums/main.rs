@@ -1,6 +1,7 @@
 // Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
 // You can return the answer in any order.
+
 struct Solution;
 use std::collections::HashMap;
 
@@ -38,7 +39,7 @@ impl Solution {
             }
             hm.insert(val, i as i32);
         }
-        return vec![];
+        vec![]
 
         // Optimzed Solution
         // let mut hm = HashMap::new();
@@ -55,7 +56,7 @@ impl Solution {
         //         }
         //     }
         // }
-        // return vec![];
+        // vec![]
 
         // Brute Force Solution
         // for (i, &a) in nums.iter().enumerate() {
@@ -65,6 +66,6 @@ impl Solution {
         //         }
         //     }    
         // }
-        // return vec![]
+        // vec![]
     }
 }

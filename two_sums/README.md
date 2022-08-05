@@ -14,13 +14,9 @@ You can return the answer in any order.
 1.  [Details](#details)
 2.  [Brute Force Solution](#brute-force-solution)
 3.  [Optimzed Solution](#optimized-solution)
-4.  [Chapter IV](#chapter-iv)
-5.  [Chapter V](#chapter-v)
-6.  [Chapter VI](#chapter-vi)
-7.  [Chapter VII](#chapter-vii)
-8.  [Chapter VIII](#chapter-viii)
-9.  [Chapter IX](#chapter-ix)
-10. [Chapter X](#chapter-x)
+4.  [Best Solution](#best-solution)
+5.  [Notable Lines](#notable-lines)
+6.  [References](#references)
 
 
 ## Details
@@ -61,54 +57,55 @@ Can you come up with an algorithm that is less than O(n<sub>2</sub>) time comple
 
 O(n<sub>2</sub>)
 
+1. Use a nested for loop.
+2. Create an if statement:
+   a. `i` and `j` are the indices, `a` and `b` are the values.
+   b. Check to ensure `i != j`, and `a + b == target`.
+3. Return correct indices (`i` and `j`) as a Vector of i32.
+
 ```
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         
-        // 1. Iterate through the Vector
         for (i, &a) in nums.iter().enumerate() {
-
-            // 2. Iterate through the Vector (nested)
             for (j, &b) in nums.iter().enumerate() {
-
-                // 3. Create an if statement
-                // "i != j" is ensures two different indices
-                // "a + b == target" checks to ensure the values add up to the target
                 if i != j && a + b == target {
-
-                    // 4. Return a Vector with the solution
                     return vec![i as i32, j as i32];
                 }
             }    
         }
-        // 5. Return empty Vector if solution is not found
-        return vec![]
+        vec![]
     }
 }
 ```
 
 ## Optimzed Solution
 
-2(n)
+2(n) => O(n)
+
+1. Use a for loop to create a HashMap of the Vector.
+2. Use another for loop to check the Vector.
+3. Create an if statement:
+   a. `look ` is the difference between `target and value`.
+   b. `hm.get(&look)` returns a reference of `look` as an `Option` type.
+   c. `if let Some(&j) = hm.get(&look)` matches the reference of `look` to the reference of `j`.
+4. Create another if statement within the previous:
+   a. Check to ensure each element was only used once.
+   b. Return correct indices (`i` and `j`) as a Vector of i32.
 
 ```
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
-        // 1. Create a HashMap
         let mut hm = HashMap::new();
 
-        // 2. Add the values to the Hashmap
         for (i, &val) in nums.iter().enumerate() {
             hm.insert(val, i as i32);
         }
 
-        // 3. Iterate through the Vector
         for (i, &val) in nums.iter().enumerate() {
 
-            // 4. Create a variable to look for
             let look = target - val;
-
 
             if let Some(&j) = hm.get(&look) {
                 let pos = j as usize;
@@ -117,7 +114,7 @@ impl Solution {
                 }
             }
         }
-        return vec![];
+        vec![]
     }
 }
 ```
@@ -126,71 +123,38 @@ impl Solution {
 
 O(n)
 
+1. Use a for loop.
+2. Create an if statement:
+   a. `look ` is the difference between `target and value`.
+   b. `hm.get(&look)` returns a reference of `look` as an `Option` type.
+   c. `if let Some(&j) = hm.get(&look)` matches the reference of `look` to the reference of `j`.
+3. Insert current `val` and `i as i32` into HashMap.
+
 ```
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
-        // 1. Create a HashMap
         let mut hm = HashMap::new();
 
-        // 2. Iterate through the Vector
         for (i, &val) in nums.iter().enumerate() {
 
-            // 3. Create a variable to look for
             let look = target - val;
             if let Some(&j) = hm.get(&look) {
                 return vec![i as i32, j];
             }
             hm.insert(val, i as i32);
         }
-        return vec![];
+        vec![]
     }
 }
 ```
 
-## Chapter V
+## Notable Lines
 
-Enter information about Chapter V.
+1. `if let Some(&j) = hm.get(&look)` this line is looking for the index of look. First pass will fail since `hm` is empty.
+2. `hm.insert(val, i as i32)` is at the end of the loop instead of the beginning because if the target is double the first element, `look` will return the first element which would use the same element twice.
 
-```
-# this ia a code block for chapter v.
-```
+## References
 
-## Chapter VI
-
-Enter information about Chapter VI.
-
-```
-# this ia a code block for chapter vi.
-```
-
-## Chapter VII
-
-Enter information about Chapter VII.
-
-```
-# this ia a code block for chapter vii.
-```
-## Chapter VIII
-
-Enter information about Chapter VIII.
-
-```
-# this ia a code block for chapter viii.
-```
-
-## Chapter IX
-
-Enter information about Chapter IX.
-
-```
-# this ia a code block for chapter ix.
-```
-
-## Chapter X
-
-Enter information about Chapter X.
-
-```
-# this ia a code block for chapter x.
-```
+1. Examples of `if let` and `Some()`:
+https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html
