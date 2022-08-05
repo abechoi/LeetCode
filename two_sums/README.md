@@ -79,7 +79,7 @@ impl Solution {
 }
 ```
 
-## Optimzed Solution
+## Optimized Solution
 
 2(n) => O(n)
 
@@ -157,4 +157,6 @@ impl Solution {
 ## References
 
 1. Examples of `if let` and `Some()`:
-https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html
+(https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html)
+2. HashMaps:
+(https://doc.rust-lang.org/std/collections/struct.HashMap.html#method.get)
