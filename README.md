@@ -4,13 +4,13 @@
 <p>By Abe Choi</p>
 </div>
 
-<p align="center">
+<p>
 75 Programming Questions on LeetCode using Rust.
 </p>
 
 1.  [Two Sums](/two_sums)
 
-<p align="center">
+<p>
 Other Problems on  on LeetCode using Rust.
 </p>
 
