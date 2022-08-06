@@ -30,33 +30,33 @@ impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
         // Best Solution
-        let mut hm = HashMap::new();
-
-        for (i, &val) in nums.iter().enumerate() {
-            let look = target - val;
-            if let Some(&j) = hm.get(&look) {
-                return vec![i as i32, j];
-            }
-            hm.insert(val, i as i32);
-        }
-        vec![]
-
-        // Optimzed Solution
         // let mut hm = HashMap::new();
-        // for (i, &val) in nums.iter().enumerate() {
-        //     hm.insert(val, i as i32);
-        // }
 
         // for (i, &val) in nums.iter().enumerate() {
         //     let look = target - val;
         //     if let Some(&j) = hm.get(&look) {
-        //         let pos = j as usize;
-        //         if i != pos {
-        //             return vec![i as i32, j];
-        //         }
+        //         return vec![i as i32, j];
         //     }
+        //     hm.insert(val, i as i32);
         // }
         // vec![]
+
+        // Optimzed Solution
+        let mut hm = HashMap::new();
+        for (i, &val) in nums.iter().enumerate() {
+            hm.insert(val, i as i32);
+        }
+
+        for (i, &val) in nums.iter().enumerate() {
+            let look = target - val;
+            if let Some(&j) = hm.get(&look) {
+                let pos = j as usize;
+                if i != pos {
+                    return vec![i as i32, j];
+                }
+            }
+        }
+        vec![]
 
         // Brute Force Solution
         // for (i, &a) in nums.iter().enumerate() {
