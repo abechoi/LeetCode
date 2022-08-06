@@ -9,12 +9,9 @@
 </p>
 
 1.  [Two Sums](/two_sums)
-2.  [Section II](/Compendium/Section_II)
-3.  [Section III](/Compendium/Section_III)
-4.  [Section IV](/Compendium/Section_IV)
-5.  [Section V](/Compendium/Section_V)
-6.  [Section VI](/Compendium/Section_VI)
-7.  [Section VII](/Compendium/Section_VII)
-8.  [Section VIII](/Compendium/Section_VIII)
-9.  [Section IX](/Compendium/Section_IX)
-10. [Section X](/Compendium/Section_X)
+
+<p align="center">
+Other Problems on  on LeetCode using Rust.
+</p>
+
+1. [Palindrome Number](/palindrome_number/)

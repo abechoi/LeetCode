@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Two Sums</h1>
+<h1>Palindrome Number</h1>
 <p>By Abe Choi</p>
 </div>
 
