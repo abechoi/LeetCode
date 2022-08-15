@@ -19,56 +19,6 @@ impl ListNode {
 
 fn main() {
 
-    // let l1 = Some(Box::new(ListNode{
-    //     val: 2,
-    //     next: Some(Box::new(ListNode{
-    //         val: 4,
-    //         next: Some(Box::new(ListNode::new(9)))
-    //     }))
-    // }));
-
-    // let l2 = Some(Box::new(ListNode{
-    //     val: 5,
-    //     next: Some(Box::new(ListNode{
-    //         val: 6,
-    //         next: Some(Box::new(ListNode{
-    //             val: 4,
-    //             next: Some(Box::new(ListNode::new(9)))
-    //         }))
-    //     }))
-    // }));
-
-    // let l1 = Some(Box::new(ListNode {
-    //     val: 9,
-    //     next: Some(Box::new(ListNode {
-    //         val: 9,
-    //         next: Some(Box::new(ListNode {
-    //             val: 9,
-    //             next: Some(Box::new(ListNode {
-    //                 val: 9,
-    //                 next: Some(Box::new(ListNode {
-    //                     val: 9,
-    //                     next: Some(Box::new(ListNode {
-    //                         val: 9,
-    //                         next: Some(Box::new(ListNode::new(9)))
-    //                     }))
-    //                 }))
-    //             }))
-    //         }))
-    //     }))
-    // }));
-
-    // let l2 = Some(Box::new(ListNode {
-    //     val: 9,
-    //     next: Some(Box::new(ListNode {
-    //         val: 9, 
-    //         next: Some(Box::new(ListNode {
-    //             val: 9,
-    //             next: Some(Box::new(ListNode::new(9)))
-    //         }))
-    //     }))
-    // }));
-
     let l1 = Some(Box::new(ListNode{
         val: 1,
         next: Some(Box::new(ListNode{
@@ -94,6 +44,7 @@ fn main() {
 impl Solution {
     pub fn add_two_numbers(l1: Option<Box<ListNode>>,l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 
+        // Initialize head to start the listnode
         let mut dummy_head = ListNode::new(0);
         let mut current = &mut dummy_head;
         let mut list1 = l1;
@@ -101,6 +52,7 @@ impl Solution {
         let mut carry: i32 = 0;
 
         while list1 != None || list2 != None {
+            println!("{:?}", list1);
             let sum = match (&list1, &list2) {
                 (Some(list1), Some(list2)) => list1.val + list2.val + carry,
                 (Some(list1), None) => list1.val + carry,
@@ -110,17 +62,17 @@ impl Solution {
 
             carry = sum / 10;
 
+            // Create the next node with the sum
             current.next = Some(Box::new(ListNode::new(sum % 10)));
 
             current = current.next.as_mut().unwrap();
 
-            list1 = if list1 != None { list1.unwrap().next } else { list1 };
-            list2 = if list2 != None { list2.unwrap().next } else { list2 };
+            list1 = if list1 != None { list1.unwrap().next} else { list1 };
+            list2 = if list2 != None { list2.unwrap().next} else { list2 };
         }
         if carry > 0 {
             current.next = Some(Box::new(ListNode::new(carry)));
         }
-
         dummy_head.next
     }
 }
